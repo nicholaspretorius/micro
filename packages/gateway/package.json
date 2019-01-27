@@ -1,0 +1,23 @@
+{
+  "name": "gateway",
+  "version": "0.0.1",
+  "description": "Example API Gateway for a microservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node.js",
+    "microservice",
+    "gateway"
+  ],
+  "author": "Nicholas Pretorius",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.3.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4"
+  }
+}
