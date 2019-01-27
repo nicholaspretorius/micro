@@ -1,0 +1,27 @@
+{
+  "name": "microservices-example",
+  "version": "0.0.1",
+  "description": "An example microservices application in Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "test"
+  },
+  "keywords": [
+    "node.js",
+    "microservice"
+  ],
+  "author": "Nicholas Pretorius",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
