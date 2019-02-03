@@ -23,7 +23,13 @@ const resolvers = {
   Query: {
     status: () => "Hello world",
     mails: () => mockMails,
-    mail: (_, args, context) => console.log(args)
+    mail: (_, args, context) => mockMails[0]
+  },
+  Mutation: {
+    mail: (_, args) => {
+      mockMails[1] = args;
+      return args;
+    }
   }
 };
 

@@ -1,0 +1,22 @@
+query {
+  mail(subject: "Hello", receiver:"test@test.com") {
+    subject
+    receiver
+    content
+    _id
+  }
+  mails{
+    _id
+    receiver
+    subject
+    content
+  }
+}
+
+mutation {
+  mail(subject: "Testing 3", receiver: "nic3@test.com", content: "Hello world again!") {
+    subject
+    receiver
+    content
+  }
+}
