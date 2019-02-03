@@ -1,53 +1,39 @@
 const axios = require("axios");
 
-const mockMails = [
-  {
-    subject: "Hello world 1!",
-    receiver: "nic1@test.com",
-    content: "Hello Nic1!",
-    _id: "1"
-  },
-  {
-    subject: "Hello world 2!",
-    receiver: "nic2@test.com",
-    content: "Hello Nic2!",
-    _id: "2"
-  },
-  {
-    subject: "Hello world 3!",
-    receiver: "nic3@test.com",
-    content: "Hello Nic3!",
-    _id: "3"
-  }
-];
+const host = "http://localhost";
+const port = process.env.DB_PORT;
+const url = `${host}:${port}`;
 
-const getMails = async () => {
-  const mails = (await axios.get(`http://localhost:3001/mail`)).data.payload;
-  return mails;
-};
+const get = async path => (await axios.get(`${url}/${path}`)).data.payload;
 
-const getSingleMail = async id => {
-  const mail = (await axios.get(`http://localhost:3001/mail/${id}`)).data
-    .payload;
-  return mail;
-};
+const post = async (path, body) =>
+  (await axios.post(`${url}/${path}`, { ...body })).data.payload;
 
-const sendMail = async body => {
-  const mail = (await axios.post(`http://localhost:3001/mail`, { ...body }))
-    .data.payload;
+// const getMails = async () => {
+//   const mails = (await axios.get(`${url}/mail`)).data.payload;
+//   return mails;
+// };
 
-  return mail;
-};
+// const getSingleMail = async id => {
+//   const mail = (await axios.get(`${url}/mail/${id}`)).data.payload;
+//   return mail;
+// };
+
+// const sendMail = async body => {
+//   const mail = (await axios.post(`${url}/mail`, { ...body })).data.payload;
+
+//   return mail;
+// };
 
 const resolvers = {
   Query: {
     status: () => "Hello world",
-    mails: () => getMails(),
+    mails: () => get("mail"),
     // mail: (_, args, context) => mockMails[0]
-    mail: (_, { id }) => getSingleMail(id)
+    mail: (_, { id }) => get(`mail/${id}`)
   },
   Mutation: {
-    mail: (_, args) => sendMail(args)
+    mail: (_, args) => post(`mail`, args)
   }
 };
 
