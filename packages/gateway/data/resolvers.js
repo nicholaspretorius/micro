@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const mockMails = [
   {
     subject: "Hello world 1!",
@@ -19,11 +21,23 @@ const mockMails = [
   }
 ];
 
+const getMails = async () => {
+  const mails = (await axios.get("http://localhost:3001/mail")).data.payload;
+  return mails;
+};
+
+const getSingleMail = async id => {
+  const mail = (await axios.get(`http://localhost:3001/mail/${id}`)).data
+    .payload;
+  return mail;
+};
+
 const resolvers = {
   Query: {
     status: () => "Hello world",
-    mails: () => mockMails,
-    mail: (_, args, context) => mockMails[0]
+    mails: () => getMails(),
+    // mail: (_, args, context) => mockMails[0]
+    mail: (_, { id }) => getSingleMail(id)
   },
   Mutation: {
     mail: (_, args) => {

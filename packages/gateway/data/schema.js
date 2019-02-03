@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Query {
     status: String!
     mails: [Mail]
-    mail(subject: String!, receiver: String!): Mail
+    mail(id: String!): Mail
   }
 
   type Mail {
