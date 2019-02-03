@@ -22,13 +22,20 @@ const mockMails = [
 ];
 
 const getMails = async () => {
-  const mails = (await axios.get("http://localhost:3001/mail")).data.payload;
+  const mails = (await axios.get(`http://localhost:3001/mail`)).data.payload;
   return mails;
 };
 
 const getSingleMail = async id => {
   const mail = (await axios.get(`http://localhost:3001/mail/${id}`)).data
     .payload;
+  return mail;
+};
+
+const sendMail = async body => {
+  const mail = (await axios.post(`http://localhost:3001/mail`, { ...body }))
+    .data.payload;
+
   return mail;
 };
 
@@ -40,10 +47,7 @@ const resolvers = {
     mail: (_, { id }) => getSingleMail(id)
   },
   Mutation: {
-    mail: (_, args) => {
-      mockMails[1] = args;
-      return args;
-    }
+    mail: (_, args) => sendMail(args)
   }
 };
 
