@@ -6,13 +6,37 @@ const pingHandler = (_, res) => {
 };
 
 const mailHandler = async (_, res) => {
-  const mails = await Mail.find();
-  res.send(mails);
+  let result;
+
+  try {
+    result = await Mail.find();
+  } catch (err) {
+    result = err;
+  }
+
+  res.send({
+    message: "DB response",
+    service: "Database Service",
+    status: 200,
+    payload: result
+  });
 };
 
 const singleMailHandler = async (req, res) => {
-  const mail = await Mail.findById(req.params.id);
-  res.send(mail);
+  let result;
+
+  try {
+    result = await Mail.findById(req.params.id);
+  } catch (err) {
+    result = err;
+  }
+
+  res.send({
+    message: "DB response",
+    service: "Database Service",
+    status: 200,
+    payload: result
+  });
 };
 
 module.exports = server => {

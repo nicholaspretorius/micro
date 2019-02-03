@@ -4,12 +4,12 @@ require("dotenv").config();
 
 schema.applyMiddleware({ app: server });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.GATEWAY_PORT || 4000;
 
 server.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
 server.listen(PORT, () => {
-  console.log(`Listening on ${PORT}`);
+  console.log(`Listening to Gateway on ${PORT}`);
 });

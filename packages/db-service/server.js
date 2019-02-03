@@ -2,7 +2,7 @@ const server = require("express")();
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.DB_PORT || 3001;
 
 server.use(bodyParser.json());
 
