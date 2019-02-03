@@ -1,5 +1,5 @@
 const server = require("express")();
-const schema = require("./data/schema");
+const schema = require("./data/apollo");
 require("dotenv").config();
 
 schema.applyMiddleware({ app: server });

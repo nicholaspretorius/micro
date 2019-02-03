@@ -21,8 +21,9 @@ const mockMails = [
 
 const resolvers = {
   Query: {
+    status: () => "Hello world",
     mails: () => mockMails,
-    mail: (_, args, context) => console.log(args, context)
+    mail: (_, args, context) => console.log(args)
   }
 };
 

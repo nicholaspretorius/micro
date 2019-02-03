@@ -1,16 +1,22 @@
-const { ApolloServer } = require("apollo-server-express");
-const typeDefs = require("./types");
-const resolvers = require("./resolvers");
+const { gql } = require("apollo-server-express");
 
-const schema = new ApolloServer({
-  typeDefs,
-  resolvers,
-  playground: {
-    endpoint: "http://localhost:4000/graphql",
-    settings: {
-      "editor.theme": "dark"
-    }
+const typeDefs = gql`
+  type Query {
+    status: String!
+    mails: [Mail]
+    mail(subject: String!, receiver: String!): Mail
   }
-});
 
-module.exports = schema;
+  type Mail {
+    subject: String
+    receiver: String
+    content: String
+    _id: String
+  }
+
+  type Mutation {
+    mail(subject: String!, receiver: String!, content: String!): Mail
+  }
+`;
+
+module.exports = typeDefs;
