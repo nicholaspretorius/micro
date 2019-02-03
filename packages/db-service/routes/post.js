@@ -24,5 +24,5 @@ const mailHandler = async (req, res) => {
 };
 
 module.exports = server => {
-  server.post("/mails", mailHandler);
+  server.post("/mail", mailHandler);
 };

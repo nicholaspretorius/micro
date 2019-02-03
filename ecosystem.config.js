@@ -15,7 +15,8 @@ module.exports = {
       watch: true,
       max_memory_restart: "1G",
       env: {
-        PORT: process.env.PORT
+        GATEWAY_PORT: process.env.GATEWAY_PORT,
+        DB_PORT: process.env.DB_PORT
       }
     },
     {
@@ -24,8 +25,8 @@ module.exports = {
       autorestart: true,
       watch: true,
       env: {
-        PORT: process.env.PORT,
-        DB: process.env.DB
+        DB_PORT: process.env.DB_PORT,
+        DB_URI: process.env.DB_URI
       }
     }
   ]
