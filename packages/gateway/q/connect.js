@@ -15,13 +15,25 @@ amqp.connect(
 
       ch.assertQueue(q, { durable: true });
 
-      ch.sendToQueue(q, Buffer.from("Hello from RabbitMQ2!"));
+      channel = ch;
+
+      // ch.sendToQueue(q, Buffer.from("Hello from RabbitMQ2!"));
     });
 
-    setTimeout(() => {
-      conn.close();
+    // setTimeout(() => {
+    //   conn.close();
 
-      process.exit(0);
-    }, 1000);
+    //   process.exit(0);
+    // }, 1000);
   }
 );
+
+const pushMessagesToQ = msg => {
+  if (!channel) setTimeout(pushMessagesToQ(msg), 1000);
+
+  channel.sendToQueue(q, Buffer.from(msg));
+
+  return { message: "done" };
+};
+
+module.exports = pushMessagesToQ;
