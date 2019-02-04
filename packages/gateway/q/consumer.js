@@ -3,7 +3,6 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "./../.env") });
 
 const q = "test_q";
-let channel;
 
 amqp.connect(
   process.env.AMQP_URL,
@@ -15,13 +14,13 @@ amqp.connect(
 
       ch.assertQueue(q, { durable: true });
 
-      ch.sendToQueue(q, Buffer.from("Hello from RabbitMQ2!"));
+      ch.consume(
+        q,
+        msg => {
+          console.log("Message: ", msg.content.toString());
+        },
+        { noAck: true }
+      );
     });
-
-    setTimeout(() => {
-      conn.close();
-
-      process.exit(0);
-    }, 1000);
   }
 );
