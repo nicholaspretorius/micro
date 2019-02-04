@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { pushMessagesToQ } = require("./../q/connect");
 
 const host = "http://localhost";
 const port = process.env.DB_PORT;
@@ -33,7 +34,19 @@ const resolvers = {
     mail: (_, { id }) => get(`mail/${id}`)
   },
   Mutation: {
-    mail: (_, args) => post(`mail`, args)
+    mail: (_, args) => {
+      let result;
+      try {
+        result = post(`mail`, args);
+      } catch (err) {
+        result = err;
+      }
+
+      // q only takes strings in the buffer
+      pushMessagesToQ(JSON.stringify(args));
+
+      return result;
+    }
   }
 };
 

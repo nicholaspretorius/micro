@@ -3,7 +3,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "./../.env") });
 
 const q = "test_q";
-let channel;
+let channel = null;
 
 amqp.connect(
   process.env.AMQP_URL,
@@ -36,4 +36,6 @@ const pushMessagesToQ = msg => {
   return { message: "done" };
 };
 
-module.exports = pushMessagesToQ;
+module.exports = {
+  pushMessagesToQ
+};

@@ -16,7 +16,8 @@ module.exports = {
       max_memory_restart: "1G",
       env: {
         GATEWAY_PORT: process.env.GATEWAY_PORT,
-        DB_PORT: process.env.DB_PORT
+        DB_PORT: process.env.DB_PORT,
+        AMQP_URI: process.env.AMQP_URI
       }
     },
     {
