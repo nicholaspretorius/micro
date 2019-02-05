@@ -29,6 +29,18 @@ module.exports = {
         DB_PORT: process.env.DB_PORT,
         DB_URI: process.env.DB_URI
       }
+    },
+    {
+      name: "Email Service",
+      script: basePath + "/email-service/index.js",
+      autorestart: true,
+      watch: true,
+      env: {
+        DB_PORT: process.env.DB_PORT,
+        DB_URI: process.env.DB_URI,
+        AMQP_URI: process.env.AMQP_URI,
+        EMAIL_PORT: process.env.EMAIL_PORT
+      }
     }
   ]
 };

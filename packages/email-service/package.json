@@ -1,0 +1,19 @@
+{
+  "name": "email-service",
+  "version": "0.0.1",
+  "description": "This is the emailing service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "email",
+    "mailjet"
+  ],
+  "author": "Nicholas Pretorius",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "dotenv": "^6.2.0"
+  }
+}
