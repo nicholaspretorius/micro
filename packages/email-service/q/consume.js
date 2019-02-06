@@ -2,6 +2,8 @@ const amqp = require("amqplib/callback_api");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "./../.env") });
 
+const sendMail = require("./../handler/send");
+
 module.exports = () => {
   const q = "test_q";
 
@@ -22,6 +24,7 @@ module.exports = () => {
 
             try {
               email = JSON.parse(msg.content.toString());
+              sendMail(email);
               console.log("Email: ", email);
             } catch (err) {
               console.log("Consumer error: ", err);

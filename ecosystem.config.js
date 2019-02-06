@@ -39,7 +39,9 @@ module.exports = {
         DB_PORT: process.env.DB_PORT,
         DB_URI: process.env.DB_URI,
         AMQP_URI: process.env.AMQP_URI,
-        EMAIL_PORT: process.env.EMAIL_PORT
+        EMAIL_PORT: process.env.EMAIL_PORT,
+        MJ_PUBLIC_KEY: process.env.MJ_PUBLIC_KEY,
+        MJ_PRIVATE_KEY: process.env.MJ_PRIVATE_KEY
       }
     }
   ]
