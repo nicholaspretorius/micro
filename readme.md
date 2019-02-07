@@ -10,3 +10,7 @@ This is a small example of a microservice in Node.js. It uses Apollo to run a Gr
 * pm2 start all
 * pm2 delete all
 
+GraphQL API on: http://localhost:4000
+GraphiQL on: http://localhost:4000/graphql 
+REST API on: http://localhost:3001/mail 
+
