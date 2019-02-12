@@ -43,6 +43,22 @@ module.exports = {
         MJ_PUBLIC_KEY: process.env.MJ_PUBLIC_KEY,
         MJ_PRIVATE_KEY: process.env.MJ_PRIVATE_KEY
       }
+    },
+    {
+      name: "Nodemail Service",
+      script: basePath + "/nodemail-service/index.js",
+      autorestart: true,
+      env: {
+        NM_SERVICE: process.env.NM_SERVICE,
+        NM_HOST: process.env.NM_HOST,
+        NM_PORT: process.env.NM_PORT,
+        NM_AUTH: process.env.NM_AUTH,
+        NM_USER: process.env.NM_USER,
+        NM_CLIENT_ID: process.env.NM_CLIENT_ID,
+        NM_CLIENT_SECRET: process.env.NM_CLIENT_SECRET,
+        NM_TOKEN: process.env.NM_TOKEN,
+        NM_REFRESH_TOKEN: process.env.NM_REFRESH_TOKEN
+      }
     }
   ]
 };

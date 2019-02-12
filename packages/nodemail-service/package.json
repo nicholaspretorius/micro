@@ -1,0 +1,20 @@
+{
+  "name": "nodemail-service",
+  "version": "0.0.1",
+  "description": "An email service using Nodemailer",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "nodemailer",
+    "email"
+  ],
+  "author": "Nicholas Pretorius",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "dotenv": "^6.2.0",
+    "nodemailer": "^5.1.1"
+  }
+}
